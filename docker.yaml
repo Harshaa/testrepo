@@ -1,0 +1,20 @@
+
+version: '3.4'
+
+services:
+  database_service:
+    image: mongo:latest
+    container_name: 'my_project_dev_database' # Coupling smell !!!
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: 'root' # Coupling smell !!!
+      MONGO_INITDB_ROOT_PASSWORD: 'root' # Coupling smell !!!
+      MONGO_INITDB_DATABASE: 'admin' # Coupling smell !!!
+    ports:
+      - 27017:27017 # Coupling smell !!!
+    volumes:
+      - data_volume:/data/db
+      - ./dev/configureDatabase:/docker-entrypoint-initdb.d:rw # Coupling smell !!!
+
+volumes:
+  data_volume:
+    name: 'my_project_dev_data' # Coupling smell !!!
