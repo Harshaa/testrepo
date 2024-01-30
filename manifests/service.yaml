@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: workflowautomatic
+  namespace: namespace-workflow-1706635960685
+spec:
+  type: LoadBalancer
+  selector:
+    app: workflowautomatic
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000

@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: workflowautomatic
+  labels:
+    app: workflowautomatic
+  namespace: namespace-workflow-1706635960685
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: workflowautomatic
+  template:
+    metadata:
+      labels:
+        app: workflowautomatic
+    spec:
+      containers:
+        - name: workflowautomatic
+          image: harshaaksregistry.azurecr.io/image-workflow-1706635960685:latest
+          ports:
+            - containerPort: 5000
