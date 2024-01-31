@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tests
+  labels:
+    app: tests
+  namespace: namespace-workflow-1706740484111
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tests
+  template:
+    metadata:
+      labels:
+        app: tests
+    spec:
+      containers:
+        - name: tests
+          image: harshaaksregistry.azurecr.io/image-workflow-1706740484111test:latest
+          ports:
+            - containerPort: 5000
